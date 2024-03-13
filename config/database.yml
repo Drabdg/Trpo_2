@@ -1,0 +1,30 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: labsek
+  username: lab_sek
+  password: "root"
+  host: localhost
+  port: 5432
+  schema_search_path: myapp,sharedapp,public
+  min_messages: notice
+
+test:
+  <<: *default
+  database: labsek
+  username: lab_sek
+  password: "root"
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: labsek
+  username: lab_sek
+  password: "root"
+  host: localhost
+  port: 5432

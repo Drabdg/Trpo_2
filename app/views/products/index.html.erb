@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+<% end %>
+
+<h1>List of products</h1>
+
+<% if user_signed_in? %>
+  <%= link_to 'Create new product', new_product_path %>
+<% end %>
+
+<% @products.each do |product| %>
+  <div class="travel-place">
+    <h3><%= product.title %></h3>
+    <p><strong>Price:</strong> <%= product.price %></p>
+    <p><strong>Descripion:</strong> <%= product.description %></p>
+    <p><strong>Created at:</strong> <%= product.created_at %></p>
+    <p><strong>Updated at:</strong> <%= product.updated_at %></p>
+
+    <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_product_path(product) %>
+        <%= button_to  'Delete', product, method: :delete %>
+    <% end %>
+  </div>
+  <hr>
+<% end %>

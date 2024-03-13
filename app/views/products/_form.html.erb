@@ -1,0 +1,32 @@
+<!-- views/travel_places/_form.html.erb -->
+<%= form_with(model: product, local: true, html: { class: 'form' }) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "ошибка") %> form filling:</h2>
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %></br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %></br>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %></br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit product.persisted? ? 'Update' : 'Create' %>
+  </div>
+<% end %>
